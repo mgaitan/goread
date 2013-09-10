@@ -29,3 +29,11 @@ handlers:
 
 - url: /.*
   script: _go_app
+
+skip_files:
+- ^(.*/)?#.*#
+- ^(.*/)?.*~
+- ^(.*/)?.*\.py[co]
+- ^(.*/)?.*/RCS/.*
+- ^(.*/)?\..*
+- ^vagrant/.*
