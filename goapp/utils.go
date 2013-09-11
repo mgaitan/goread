@@ -55,6 +55,7 @@ func serveError(w http.ResponseWriter, err error) {
 
 type Includes struct {
 	Angular             string
+	AngularRoute        string
 	BootstrapCss        string
 	BootstrapJs         string
 	FontAwesome         string
@@ -75,6 +76,7 @@ type Includes struct {
 
 var (
 	Angular      string
+	AngularRoute string
 	BootstrapCss string
 	BootstrapJs  string
 	FontAwesome  string
@@ -96,6 +98,7 @@ func init() {
 
 	if appengine.IsDevAppServer() {
 		Angular = fmt.Sprintf("/static/js/angular-%v.js", angular_ver)
+		AngularRoute = fmt.Sprintf("/static/js/angular-route-%v.js", angular_ver)
 		BootstrapCss = fmt.Sprintf("/static/css/bootstrap.css")
 		BootstrapJs = fmt.Sprintf("/static/js/bootstrap.js")
 		FontAwesome = fmt.Sprintf("/static/css/font-awesome-%v.css", font_awesome_ver)
@@ -104,6 +107,7 @@ func init() {
 		Underscore = fmt.Sprintf("/static/js/underscore-%v.js", underscore_ver)
 	} else {
 		Angular = fmt.Sprintf("//ajax.googleapis.com/ajax/libs/angularjs/%v/angular.min.js", angular_ver)
+		Angular = fmt.Sprintf("//ajax.googleapis.com/ajax/libs/angularjs/%v/angular-route.min.js", angular_ver)
 		BootstrapCss = fmt.Sprintf("//netdna.bootstrapcdn.com/bootstrap/%v/css/bootstrap.min.css", bootstrap_ver)
 		BootstrapJs = fmt.Sprintf("//netdna.bootstrapcdn.com/bootstrap/%v/js/bootstrap.min.js", bootstrap_ver)
 		FontAwesome = fmt.Sprintf("//netdna.bootstrapcdn.com/font-awesome/%v/css/font-awesome.min.css", font_awesome_ver)
@@ -125,6 +129,7 @@ func init() {
 func includes(c mpg.Context, w http.ResponseWriter, r *http.Request) *Includes {
 	i := &Includes{
 		Angular:             Angular,
+		AngularRoute:        AngularRoute,
 		BootstrapCss:        BootstrapCss,
 		BootstrapJs:         BootstrapJs,
 		FontAwesome:         FontAwesome,

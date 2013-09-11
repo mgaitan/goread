@@ -13,10 +13,18 @@ function countProperties(obj) {
 	return count;
 }
 
-var goReadAppModule = angular.module('goReadApp', ['ui.sortable'])
+var MainController = function($scope) {
+};
+
+var goReadAppModule = angular.module('goReadApp', ['ui.sortable', 'ngRoute'])
 	.config(function($sceDelegateProvider) {
 		$sceDelegateProvider.resourceUrlWhitelist(['.*']);
 	})
+	.config(['$routeProvider', function($routeProvider) {
+		$routeProvider
+			.when('/', {templateUrl: 't-main', controller: MainController})
+			.otherwise({redirectTo: '/'});
+	}])
 	.filter('encodeURI', function() {
 		return encodeURIComponent;
 	});
