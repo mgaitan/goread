@@ -408,7 +408,7 @@
 				<p>
 					<strong>How much does a paid subscription cost?</strong>
 					Either $3/month or $30/year. A 30-day free trial is provided. Please contact support if you have questions.
-					If you are not able to pay, setting up your own server is not difficult (and free for a few hundred feeds). Follow the instructions on the <a href="https://github.com/mjibson/goread">GitHub page</a>. 
+					If you are not able to pay, setting up your own server is not difficult (and free for a few hundred feeds). Follow the instructions on the <a href="https://github.com/mjibson/goread">GitHub page</a>.
 				</p>
 				{{end}}
 			</div>
@@ -669,23 +669,6 @@
 									<a target="_blank" ng-href="https://twitter.com/intent/tweet?text={{`{{s.Title | encodeURI}}`}}&url={{`{{s.Link | encodeURI}}`}}&via=GoReadRss">
 										<i class="icon-twitter"></i>
 										tweet
-									</a>
-								</li>
-								<li style="vertical-align: middle">
-									<a target="_blank" ng-href="https://plus.google.com/share?url={{`{{s.Link | encodeURI}}`}}">
-										<i class="icon-google-plus"></i>
-										google
-									</a>
-								</li>
-								<li style="vertical-align: middle">
-									<a target="_blank" ng-href="http://www.tumblr.com/share/link?url={{`{{s.Link | encodeURI}}`}}&name={{`{{s.Title | encodeURI}}`}}">
-										<i class="icon-tumblr"></i>
-										tumblr
-									</a>
-								</li>
-								<li style="vertical-align: middle">
-									<a target="_blank" ng-href="http://www.instapaper.com/hello2?url={{`{{s.Link | encodeURI}}`}}&title={{`{{s.Title | encodeURI}}`}}">
-										save to Instapaper
 									</a>
 								</li>
 								<li ng-show="s.canUnread">
