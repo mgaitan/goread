@@ -660,7 +660,7 @@
 						<div class="story-footer">
 							<ul class="list-inline">
 								<li style="vertical-align: middle">
-									<a target="_blank" ng-href="mailto:?subject={{`{{s.Title | encodeURI}}`}}&body={{`{{s.Link | encodeURI}}`}}">
+									<a class="gmail">
 										<i class="icon-envelope"></i>
 										email
 									</a>
@@ -763,6 +763,31 @@
 	<script src="/static/js/moment.min.js"></script>
 	<script src="/static/js/site.js"></script>
 
+<script>
+
+
+    $(document).on('click', 'a.gmail', function () {
+
+        var $link = $(this).parent().prev('.story-title').children('a');
+        var $title = encodeURIComponent($link.text());
+        var $url = $link.attr('href');
+        var $body = $(this).parents('div[id^="storydiv"]').children('.story-content').text();
+
+        var a = encodeURIComponent($url) +
+            escape('\x0A' + '\x0A') + encodeURIComponent($body);
+
+        var u = 'http://mail.google.com/mail/?view=cm&ui=2&tf=0&fs=1&su=' +
+                $title + '&body=' + a;
+        if (u.length >= 2048) {
+            u = 'http://mail.google.com/mail/?view=cm&ui=2&tf=0&fs=1&su=' +
+                     $title  + '&body=' + encodeURIComponent($url);
+        }
+          window.open(u, 'gmail',
+            'height=540,width=640');
+          return false;
+    });
+
+</script>
 
 	{{if .GoogleAnalyticsId}}
 	<script>
