@@ -18,10 +18,11 @@ package sanitizer
 
 import (
 	"bytes"
-	"code.google.com/p/go.net/html"
 	"io"
 	"net/url"
 	"strings"
+
+	"golang.org/x/net/html"
 )
 
 func sanitizeLink(u *url.URL, v string) string {

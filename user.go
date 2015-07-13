@@ -33,15 +33,17 @@ import (
 	"sync"
 	"time"
 
+	"code.google.com/p/go-charset/charset"
+	_ "code.google.com/p/go-charset/data"
 	mpg "github.com/MiniProfiler/go/miniprofiler_gae"
 	"github.com/mjibson/goon"
+	"github.com/mjibson/goread/sanitizer"
+
 	"appengine"
 	"appengine/blobstore"
 	"appengine/datastore"
 	"appengine/taskqueue"
 	"appengine/user"
-
-	"sanitizer"
 )
 
 func LoginGoogle(c mpg.Context, w http.ResponseWriter, r *http.Request) {
@@ -106,7 +108,25 @@ func ImportOpml(c mpg.Context, w http.ResponseWriter, r *http.Request) {
 				}
 			}
 
-			bk, err := saveFile(c, fdata)
+			// Preflight the OPML, so we can report any errors.
+			d := xml.NewDecoder(bytes.NewReader(fdata))
+			d.CharsetReader = charset.NewReader
+			d.Strict = false
+			opml := Opml{}
+			if err := d.Decode(&opml); err != nil {
+				serveError(w, err)
+				c.Errorf("opml error: %v", err.Error())
+				return
+			}
+
+			var b bytes.Buffer
+			enc := gob.NewEncoder(&b)
+			err := enc.Encode(&opml)
+			if err != nil {
+				serveError(w, err)
+				return
+			}
+			bk, err := saveFile(c, b.Bytes())
 			if err != nil {
 				serveError(w, err)
 				return
