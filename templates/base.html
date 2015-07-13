@@ -412,7 +412,7 @@
 				<p>
 					<strong>How much does a paid subscription cost?</strong>
 					Either $3/month or $30/year. A 30-day free trial is provided. Please contact support if you have questions.
-					If you are not able to pay, setting up your own server is not difficult (and free for a few hundred feeds). Follow the instructions on the <a href="https://github.com/mjibson/goread">GitHub page</a>. 
+					If you are not able to pay, setting up your own server is not difficult (and free for a few hundred feeds). Follow the instructions on the <a href="https://github.com/mjibson/goread">GitHub page</a>.
 				</p>
 				{{end}}
 			</div>
@@ -467,45 +467,12 @@
 			<div class="row" ng-init="nouser = true">
 				<div class="col-md-offset-1 col-md-10" ng-hide="shown">
 					<div class="jumbotron">
-						<h1>Hi, RSS user</h1>
-						<p>Go Read is a web-based RSS reader.</p>
-						<p>It is designed to be as useful as Google Reader.</p>
+						<h1>Hola tin</h1>
+						<p><a href="https://github.com/mjibson/goread">Go Read</a> is a web-based RSS reader.</p>
+
 						<p><a class="btn btn-primary btn-lg" href="{{url "login-google"}}">sign up / log in with google</a></p>
-						<p class="alert alert-info">We've just released! Read the <strong><a href="http://mattjibson.com/blog/2013/06/26/go-read-open-source-google-reader-clone/">blog post</a></strong> about it.</p>
+
 					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-offset-1 col-md-5">
-					<div class="panel panel-default">
-						<div class="panel-heading"><h3>features</h3></div>
-						<div class="panel-body">
-							<ul>
-								<li><a href="https://play.google.com/store/apps/details?id=com.goread.goreader">free android client</a></li>
-								<li>same keyboard shortcuts as Google Reader</li>
-								<li>fast, snappy, and clean</li>
-								<li>mobile friendly</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-5">
-					<div class="panel panel-default">
-						<div class="panel-heading"><h3>recent updates</h3></div>
-						<div class="panel-body">
-							<ul>
-								<li>starred items</li>
-								<li>android client</li>
-								<li>HTTPS for all</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="row hidden-sm hidden-xs">
-				<div class="col-md-offset-1 col-md-10">
-					<h2>Screenshot</h2>
-					<a href="/static/img/preview.png"><img src="/static/img/preview.png" alt="screenshot" class="img-responsive"></a>
 				</div>
 			</div>
 		{{end}}
@@ -790,7 +757,6 @@
 	<script src="/static/js/moment.min.js"></script>
 	<script src="/static/js/site.js"></script>
 
-	{{.MiniProfiler}}
 
 	{{if .GoogleAnalyticsId}}
 	<script>
